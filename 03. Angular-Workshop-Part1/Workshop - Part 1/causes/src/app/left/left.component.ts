@@ -9,13 +9,9 @@ import { CausesService } from '../causes.service';
 })
 export class LeftComponent implements OnInit {
 
-  get causes() {
-    return this.causesService.causes;
-  }
+  get causes() { return this.causesService.causes; }
 
-  constructor(private causesService: CausesService) {
-    causesService.loadCauses();
-  }
+  constructor(private causesService: CausesService) { }
 
   ngOnInit() {
       this.causesService.loadCauses();
