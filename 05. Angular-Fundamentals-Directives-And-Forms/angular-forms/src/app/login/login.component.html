@@ -1,0 +1,21 @@
+<form #loginForm="ngForm" (ngSubmit)="loginHandler(loginForm.value)">
+    <div>
+        <label>Email: </label>
+        <input #emailInput="ngModel" ngModel name="email" type="text" required email>
+        <div *ngIf="emailInput.invalid && emailInput.touched">Please enter valid email!</div>
+    </div>
+    <div>
+        <label>Password: </label>
+        <input #passwordInput="ngModel" ngModel name="password" type="password" required minlength="6">
+        <div *ngIf="passwordInput.errors?.required && passwordInput.touched">Please enter a password!</div>
+        <div *ngIf="passwordInput.errors?.minlength?.actualLength !== 5 && passwordInput.touched">Password must be at least 6 characters</div>
+    </div>
+    <div>
+        <label>2WayDataBinding: </label>
+        <input [(ngModel)]="thisIsBad" name="test2wayDataBinding">
+    </div>
+    <button [disabled]="loginForm.invalid">LOGIN</button>
+</form>
+
+{{loginForm.value | json}}
+{{thisIsBad}}
